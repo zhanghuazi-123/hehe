@@ -285,4 +285,6 @@ taskkill /F /PID <PID>
 
 ## License
 
+> 本项目基于 [BaiLongma](https://github.com/zhanghuazi-123/hehe) 开源项目二次开发。
+
 本项目使用 [MIT License](./LICENSE)。
