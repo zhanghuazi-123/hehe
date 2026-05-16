@@ -1,0 +1,14 @@
+{
+  "clawbot": {},
+  "voice": {
+    "whisperModel": "small",
+    "aliyunApiKey": ""
+  },
+  "tts": {
+    "ttsProvider": "doubao",
+    "ttsVoiceId": "zh_female_tianmeixiaoyuan_uranus_bigtts",
+    "doubaoKey": "",
+    "elevenLabsKey": "",
+    "doubaoAppId": ""
+  }
+}

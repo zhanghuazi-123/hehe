@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hehe · Cognitive Surface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./src/ui/brain-ui/styles.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+<!-- Background effects from 小白 -->
+<canvas id="starfield"></canvas>
+<div class="origin"><div class="control"><div class="galaxy" id="galaxy"></div></div></div>
+<div id="solar-system">
+  <div id="sun"><div class="sun-label" id="sunLabel"></div></div>
+  <div id="mercury-wrapper"><div id="mercury"></div></div>
+  <div id="venus-wrapper"><div id="venus"></div></div>
+  <div id="earth-wrapper"><div id="earth"></div></div>
+  <div id="mars-wrapper"><div id="mars"></div></div>
+  <div id="jupiter-wrapper"><div id="jupiter"></div></div>
+  <div id="saturn-wrapper"><div id="saturn"></div></div>
+</div>
+
+<script type="module" src="./src/ui/brain-ui/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b9d"/>
+      <stop offset="50%" style="stop-color:#c44dff"/>
+      <stop offset="100%" style="stop-color:#6ec6ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="64" cy="64" r="60" fill="url(#g)" opacity="0.15"/>
+  <circle cx="64" cy="64" r="48" fill="url(#g)" filter="url(#glow)"/>
+  <circle cx="64" cy="64" r="42" fill="#0d1117"/>
+  <text x="64" y="72" text-anchor="middle" font-size="36" font-weight="bold" fill="url(#g)" font-family="sans-serif">呀</text>
+  <circle cx="64" cy="64" r="48" fill="none" stroke="url(#g)" stroke-width="1.5" opacity="0.3"/>
+</svg>
