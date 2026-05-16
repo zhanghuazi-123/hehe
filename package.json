@@ -36,8 +36,8 @@
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "appId": "com.xiaoyuanda.bailongma",
-    "productName": "Bailongma",
+    "appId": "com.zhanghuazi.hehe",
+    "productName": "Hehe",
     "artifactName": "${productName}-Setup-${version}.${ext}",
     "npmRebuild": false,
     "asar": true,
@@ -99,8 +99,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "xiaoyuanda666-ship-it",
-        "repo": "BaiLongma",
+        "owner": "zhanghuazi-123",
+        "repo": "hehe",
         "releaseType": "release"
       }
     ]

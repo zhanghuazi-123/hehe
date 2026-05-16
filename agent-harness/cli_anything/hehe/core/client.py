@@ -1,4 +1,4 @@
-"""HTTP client for Bailongma API."""
+"""HTTP client for Hehe API."""
 
 import json
 import urllib.request
@@ -6,8 +6,8 @@ import urllib.error
 from typing import Optional, Any
 
 
-class BailongmaClient:
-    """Low-level HTTP client for Bailongma API."""
+class HeheClient:
+    """Low-level HTTP client for Hehe API."""
 
     def __init__(self, base_url: str = "http://127.0.0.1:3721", token: Optional[str] = None):
         self.base_url = base_url.rstrip("/")

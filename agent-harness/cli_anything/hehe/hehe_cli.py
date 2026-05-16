@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Bailongma CLI - Control the AI consciousness experiment framework from the command line.
+"""Hehe CLI - Control the AI consciousness experiment framework from the command line.
 
 Usage:
-  bailongma message "Hello"
-  bailongma status
-  bailongma memory list --limit 10
-  bailongma admin stop
-  bailongma settings show
-  bailongma                            # enter REPL mode
+  hehe message "Hello"
+  hehe status
+  hehe memory list --limit 10
+  hehe admin stop
+  hehe settings show
+  hehe                            # enter REPL mode
 """
 
 import json
@@ -44,12 +44,12 @@ def _handle_result(result):
 
 
 @click.group(invoke_without_command=True)
-@click.option("--base-url", envvar="BAILONGMA_URL", default="http://127.0.0.1:3721", help="Bailongma API base URL")
+@click.option("--base-url", envvar="BAILONGMA_URL", default="http://127.0.0.1:3721", help="Hehe API base URL")
 @click.option("--token", envvar="BAILONGMA_TOKEN", default=None, help="API auth token")
 @click.option("--json", "json_mode", is_flag=True, help="Force JSON output")
 @click.pass_context
 def cli(ctx, base_url, token, json_mode):
-    """Bailongma CLI - AI consciousness experiment framework."""
+    """Hehe CLI - AI consciousness experiment framework."""
     ctx.ensure_object(dict)
     ctx.obj["base_url"] = base_url
     ctx.obj["token"] = token
@@ -62,12 +62,12 @@ def cli(ctx, base_url, token, json_mode):
 def _enter_repl(ctx):
     """Interactive REPL mode."""
     import code
-    from .core.client import BailongmaClient
+    from .core.client import HeheClient
 
-    client = BailongmaClient(base_url=ctx.obj["base_url"], token=ctx.obj["token"])
+    client = HeheClient(base_url=ctx.obj["base_url"], token=ctx.obj["token"])
     banner = f"""
 ╔══════════════════════════════════════════╗
-║         Bailongma CLI REPL              ║
+║         Hehe CLI REPL              ║
 ║  {ctx.obj['base_url']:38} ║
 ╚══════════════════════════════════════════╝
 
@@ -96,7 +96,7 @@ Type exit() or Ctrl+D to quit.
 @click.option("--channel", "-c", default="API", help="Message channel")
 @click.pass_context
 def message(ctx, content, from_id, channel):
-    """Send a message to the Bailongma agent."""
+    """Send a message to the Hehe agent."""
     r = cmd_message(ctx.obj["base_url"], ctx.obj["token"], content, from_id, channel)
     _handle_result(r)
 

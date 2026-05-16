@@ -1,3 +1,0 @@
-[console_scripts]
-bailongma = cli_anything.bailongma.bailongma_cli:main
-cli-anything-bailongma = cli_anything.bailongma.bailongma_cli:main

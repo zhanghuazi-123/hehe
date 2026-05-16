@@ -51,11 +51,11 @@ const SILENT_CARD_ACTIONS = new Set([
 ])
 
 function getApiHost() {
-  return String(globalThis.process?.env?.BAILONGMA_HOST || DEFAULT_API_HOST).trim() || DEFAULT_API_HOST
+  return String(globalThis.process?.env?.HEHE_HOST || DEFAULT_API_HOST).trim() || DEFAULT_API_HOST
 }
 
 function isLanAccessEnabled() {
-  return /^(1|true|yes|on)$/i.test(String(globalThis.process?.env?.BAILONGMA_ALLOW_LAN || '').trim())
+  return /^(1|true|yes|on)$/i.test(String(globalThis.process?.env?.HEHE_ALLOW_LAN || '').trim())
 }
 
 function normalizeRemoteAddress(address = '') {
@@ -120,7 +120,7 @@ function isAllowedOrigin(origin = '') {
 }
 
 function getAuthToken() {
-  return String(globalThis.process?.env?.BAILONGMA_API_TOKEN || '').trim()
+  return String(globalThis.process?.env?.HEHE_API_TOKEN || '').trim()
 }
 
 function hasValidAuthToken(req, url) {

@@ -2188,7 +2188,7 @@ function execPersonCardMode(args = {}) {
 const MUSIC_AUDIO_EXTS = new Set(['.mp3', '.flac', '.wav', '.aac', '.ogg', '.m4a', '.opus'])
 
 async function fetchLrcFromNet(title, artist) {
-  const headers = { 'User-Agent': 'BaiLongma/1.0' }
+  const headers = { 'User-Agent': 'Hehe/1.0' }
   // 策略1：精确匹配（title + artist）
   try {
     const params = new URLSearchParams({ track_name: title })
@@ -2945,7 +2945,7 @@ function execGrantAgentDelegation({ allowed, note = '' }) {
     return toolJson({ ok: false, error: e.message })
   }
   const msg = allowed
-    ? `已记录授权：Bailongma 可以指挥本地 AI 小伙伴工作。`
+    ? `已记录授权：Hehe 可以指挥本地 AI 小伙伴工作。`
     : `已记录：用户暂不授权 Agent 委托功能。`
   return toolJson({ ok: true, allowed: !!allowed, note: String(note || ''), message: msg })
 }

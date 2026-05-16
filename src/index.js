@@ -1345,7 +1345,7 @@ async function main() {
   }
 
   // 启动 HTTP API —— 无论是否激活都要起，激活页本身就靠它
-  const apiPort = Number(globalThis.process.env.BAILONGMA_PORT) || 3721
+  const apiPort = Number(globalThis.process.env.HEHE_PORT) || 3721
   startAPI(apiPort, {
     getStateSnapshot: () => ({
       action: state.action,

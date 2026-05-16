@@ -1,18 +1,18 @@
-"""CLI command implementations for Bailongma."""
+"""CLI command implementations for Hehe."""
 
 import json
 import time
 from typing import Optional
 
-from ..core.client import BailongmaClient
+from ..core.client import HeheClient
 
 
-def _client(base_url: str, token: Optional[str]) -> BailongmaClient:
-    return BailongmaClient(base_url=base_url, token=token)
+def _client(base_url: str, token: Optional[str]) -> HeheClient:
+    return HeheClient(base_url=base_url, token=token)
 
 
 def cmd_message(base_url: str, token: Optional[str], content: str, from_id: str, channel: str) -> dict:
-    """Send a message to the Bailongma agent."""
+    """Send a message to the Hehe agent."""
     body = {"content": content, "channel": channel}
     if from_id:
         body["from_id"] = from_id

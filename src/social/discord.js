@@ -101,7 +101,7 @@ export async function startDiscordConnector({ pushMessage, emitEvent }) {
               d: {
                 token,
                 intents: 512 | 4096 | 32768,
-                properties: { os: 'windows', browser: 'bailongma', device: 'bailongma' },
+                properties: { os: 'mac', browser: 'hehe', device: 'hehe' },
               },
             })
           }

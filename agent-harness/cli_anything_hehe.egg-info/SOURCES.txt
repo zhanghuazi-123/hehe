@@ -1,0 +1,12 @@
+setup.py
+cli_anything/hehe/__init__.py
+cli_anything/hehe/hehe_cli.py
+cli_anything/hehe/core/__init__.py
+cli_anything/hehe/core/client.py
+cli_anything/hehe/core/commands.py
+cli_anything_hehe.egg-info/PKG-INFO
+cli_anything_hehe.egg-info/SOURCES.txt
+cli_anything_hehe.egg-info/dependency_links.txt
+cli_anything_hehe.egg-info/entry_points.txt
+cli_anything_hehe.egg-info/requires.txt
+cli_anything_hehe.egg-info/top_level.txt

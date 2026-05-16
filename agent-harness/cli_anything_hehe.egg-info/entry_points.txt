@@ -1,0 +1,3 @@
+[console_scripts]
+hehe = cli_anything.hehe.hehe_cli:main
+cli-anything-hehe = cli_anything.hehe.hehe_cli:main

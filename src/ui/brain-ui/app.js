@@ -11,8 +11,8 @@ import { initDocPanel, setDocPanelMode } from "./doc.js";
 renderBrainUiApp(document.body);
 const THEME_KEY = "jarvis-brain-ui-theme";
 const PHYSICS_STORAGE_KEY = "jarvis-brain-ui-physics";
-const ACTIVATION_WARMUP_KEY = "bailongma_activation_warmup_until";
-const UI_ZOOM_STORAGE_KEY = "bailongma_ui_zoom_factor";
+const ACTIVATION_WARMUP_KEY = "hehe_activation_warmup_until";
+const UI_ZOOM_STORAGE_KEY = "hehe_ui_zoom_factor";
 const MAX_CHAT_HISTORY = 60;
 const DEFAULT_AGENT_NAME = "Hehe";
 const DEFAULT_UI_ZOOM = 1.1;
@@ -20,7 +20,7 @@ const MIN_UI_ZOOM = 0.8;
 const MAX_UI_ZOOM = 1.8;
 const UI_ZOOM_STEP = 0.1;
 const UI_ZOOM_WHEEL_STEP = 0.05;
-const MEMORY_GRAPH_STORAGE_KEY = "bailongma-memory-graph-enabled";
+const MEMORY_GRAPH_STORAGE_KEY = "hehe-memory-graph-enabled";
 const MEMORY_GRAPH_ENABLED = localStorage.getItem(MEMORY_GRAPH_STORAGE_KEY) !== "false";
 
 const themeSwitcher = document.getElementById("theme-switcher");
@@ -93,7 +93,7 @@ function applyUiZoom(factor, { persist = true } = {}) {
   const nextZoom = clampZoomFactor(factor);
   currentUiZoom = nextZoom;
 
-  const bridge = window.bailongma;
+  const bridge = window.hehe;
   if (bridge?.isElectron && typeof bridge.setZoomFactor === "function") {
     bridge.setZoomFactor(nextZoom);
   } else {
@@ -109,7 +109,7 @@ function stepUiZoom(delta) {
 }
 
 function initUiZoom() {
-  const bridge = window.bailongma;
+  const bridge = window.hehe;
   const initialZoom = loadSavedUiZoom();
 
   if (!bridge?.isElectron) {
@@ -190,7 +190,7 @@ requestAnimationFrame(() => {
 async function initUpdaterUi() {
   if (!checkUpdateBtn || !updateStatusEl) return;
 
-  const bridge = window.bailongma;
+  const bridge = window.hehe;
   if (!bridge?.isElectron) {
     setUpdateStatus("仅桌面版可用", "muted");
     setUpdateButtonState({ disabled: true, label: "不可用" });
@@ -1232,7 +1232,7 @@ function handle({ type, data = {} }) {
       setAgentName(data.name);
       break;
     case "media_mode":
-      window.dispatchEvent(new CustomEvent("bailongma:media", { detail: data }));
+      window.dispatchEvent(new CustomEvent("hehe:media", { detail: data }));
       break;
     case "hotspot_mode":
       setHotspotMode(!!data.active || data.action === "show" || data.action === "open", { source: "agent_event" });
@@ -1244,7 +1244,7 @@ function handle({ type, data = {} }) {
       setPersonCardMode(!!data.active || data.action === "show" || data.action === "open" || data.action === "update", { source: "agent_event", card: data.card || null });
       break;
     case "social_status":
-      window.dispatchEvent(new CustomEvent("bailongma:social_status", { detail: data }));
+      window.dispatchEvent(new CustomEvent("hehe:social_status", { detail: data }));
       break;
     case "audio_created":
       if (data.autoPlay && data.path) {
@@ -1467,24 +1467,24 @@ async function playTTSReply(text) {
     ttsAudioEl = new Audio(url);
     ttsAudioEl.volume = 1.0; // 确保从满音量开始（避免上一次 duck 状态残留）
     // 停掉云端 ASR，但保持 mic 硬件开着以便打断检测
-    window.bailongmaVoice?.suspendForTTS?.();
+    window.heheVoice?.suspendForTTS?.();
     ttsAudioEl.onended = () => {
       URL.revokeObjectURL(url);
       ttsAudioEl = null;
       ttsCurrentText = '';
-      window.bailongmaVoice?.resumeAfterMedia();
+      window.heheVoice?.resumeAfterMedia();
     };
     ttsAudioEl.onerror = () => {
       ttsAudioEl = null;
       ttsCurrentText = '';
-      window.bailongmaVoice?.resumeAfterMedia();
+      window.heheVoice?.resumeAfterMedia();
     };
     ttsAudioEl.play().catch(() => {
-      window.bailongmaVoice?.resumeAfterMedia();
+      window.heheVoice?.resumeAfterMedia();
     });
   } catch {
     ttsCurrentText = '';
-    window.bailongmaVoice?.resumeAfterMedia();
+    window.heheVoice?.resumeAfterMedia();
   }
 }
 
@@ -1997,11 +1997,11 @@ window.addEventListener("beforeunload", () => {
   }
 
   // ── 语音设置持久化 ──
-  const VOICE_LANG_KEY       = "bailongma-voice-lang";
-  const VOICE_AUTO_SEND_KEY  = "bailongma-voice-auto-send";
-  const VOICE_AUTO_MIC_KEY   = "bailongma-voice-auto-mic";
-  const VOICE_THRESHOLD_KEY  = "bailongma-voice-threshold";
-  const VOICE_PROVIDER_KEY   = "bailongma-voice-provider";
+  const VOICE_LANG_KEY       = "hehe-voice-lang";
+  const VOICE_AUTO_SEND_KEY  = "hehe-voice-auto-send";
+  const VOICE_AUTO_MIC_KEY   = "hehe-voice-auto-mic";
+  const VOICE_THRESHOLD_KEY  = "hehe-voice-threshold";
+  const VOICE_PROVIDER_KEY   = "hehe-voice-provider";
 
   function applyVoiceProviderUI(provider) {
     const panels = { aliyun: "voice-cred-aliyun", tencent: "voice-cred-tencent", xunfei: "voice-cred-xunfei" };
@@ -2053,7 +2053,7 @@ window.addEventListener("beforeunload", () => {
       localStorage.setItem(VOICE_THRESHOLD_KEY,  String(threshold));
       localStorage.setItem(VOICE_PROVIDER_KEY,   provider);
 
-      window.dispatchEvent(new CustomEvent("bailongma:voice-threshold", { detail: { threshold } }));
+      window.dispatchEvent(new CustomEvent("hehe:voice-threshold", { detail: { threshold } }));
 
       // 将云端 ASR 凭证发送到后端
       const body = {};
@@ -2311,7 +2311,7 @@ window.addEventListener("beforeunload", () => {
   });
 
   // 监听 SSE 事件更新 ClawBot 状态
-  window.addEventListener("bailongma:social_status", (e) => {
+  window.addEventListener("hehe:social_status", (e) => {
     const d = e.detail;
     if (d?.platform !== "wechat-clawbot") return;
     if (d.status === "connected") {
@@ -2340,9 +2340,9 @@ initVoicePanel({
   getChatInput:  () => document.getElementById("msg-input"),
   getSendBtn:    () => document.getElementById("send-btn"),
   getSendMessage: (options) => chat?.send?.(options),
-  getLang:       () => localStorage.getItem("bailongma-voice-lang") || "zh-CN",
-  getAutoSend:   () => localStorage.getItem("bailongma-voice-auto-send") !== "false",
-  getAutoMic:    () => localStorage.getItem("bailongma-voice-auto-mic") === "true",
+  getLang:       () => localStorage.getItem("hehe-voice-lang") || "zh-CN",
+  getAutoSend:   () => localStorage.getItem("hehe-voice-auto-send") !== "false",
+  getAutoMic:    () => localStorage.getItem("hehe-voice-auto-mic") === "true",
 });
 
 // ── Hotspot mode ──
@@ -2462,7 +2462,7 @@ initHotspot().catch((err) => console.warn('[Hotspot] 初始化失败:', err));
     videoBtn?.classList.toggle("active", videoActive);
     if (videoActive) moveVoicePanelToBody();
     else restoreVoicePanel();
-    window.dispatchEvent(new CustomEvent("bailongma:video-mode", {
+    window.dispatchEvent(new CustomEvent("hehe:video-mode", {
       detail: { active: videoActive, kind: videoKind },
     }));
   }
@@ -2755,7 +2755,7 @@ initHotspot().catch((err) => console.warn('[Hotspot] 初始化失败:', err));
     musicActive = Boolean(visible);
     document.body.classList.toggle("music-mode", musicActive);
     musicBtn?.classList.toggle("active", musicActive);
-    window.dispatchEvent(new CustomEvent("bailongma:music-mode", {
+    window.dispatchEvent(new CustomEvent("hehe:music-mode", {
       detail: { active: musicActive },
     }));
   }
@@ -2932,8 +2932,8 @@ initHotspot().catch((err) => console.warn('[Hotspot] 初始化失败:', err));
     }
   });
 
-  window.bailongmaMedia = { handle: handleMediaCommand, showVideo, controlVideo, showImage, showCamera, showMusic, controlMusic };
-  window.addEventListener("bailongma:media", (event) => handleMediaCommand(event.detail || {}));
+  window.heheMedia = { handle: handleMediaCommand, showVideo, controlVideo, showImage, showCamera, showMusic, controlMusic };
+  window.addEventListener("hehe:media", (event) => handleMediaCommand(event.detail || {}));
 
   // 顶栏按钮：暂停+收起 / 展开+继续（不销毁）
   videoBtn?.addEventListener("click", toggleVideoPanelVisibility);

@@ -137,7 +137,7 @@ async function streamDoubao({
     method: 'POST',
     headers,
     body: JSON.stringify({
-      user: { uid: 'bailongma' },
+      user: { uid: 'hehe' },
       req_params: {
         text,
         speaker,
@@ -248,7 +248,7 @@ async function streamVolcano({ text, voiceId = 'BV001_streaming', appId, token }
     },
     body: JSON.stringify({
       app: { appid: appId, token, cluster: 'volcano_tts' },
-      user: { uid: 'bailongma' },
+      user: { uid: 'hehe' },
       audio: {
         voice_type: voiceId,
         encoding: 'mp3',
